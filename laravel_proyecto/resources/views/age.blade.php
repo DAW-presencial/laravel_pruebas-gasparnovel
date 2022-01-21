@@ -1,0 +1,1 @@
+Edad {{$age}} desde {{ config('app.name')}}
