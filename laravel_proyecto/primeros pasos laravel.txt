@@ -1,0 +1,41 @@
+instalacion de laravel con composer
+
+composer global require laravel/installer
+
+crear proyecto 
+
+laravel new blog
+
+desplegar en local
+
+php artisan serve
+
+mantenimiento 
+
+php artisan down or up
+
+
+como funciona
+
+en routes vamos a web, y alli creamos una route como esta 
+
+Route::get('/hola/{name}/{surname}/{age}', [HolaController::class, "age"]);
+
+esto define la uri y el nombre del controlador 
+
+en el controlador creado 
+
+creamos un namespace y una class que la extendemos de controller
+
+añadimos una funcion puede ser invoke que se ejecuta como default o una con nombre que quereamos
+
+    public function age(string $name, string $surname, string $age) {
+        return view("age", compact("age"));
+    }
+
+una vez echo esto vamos a view y creamos un archivo.blade.php
+
+en el que escribimos algo como 
+
+Edad {{$age}} desde {{ config('app.name')}}
+
