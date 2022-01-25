@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-
+use App\Mail\SendContactForm;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class ContactController extends Controller {
     public function index() {
@@ -15,6 +17,11 @@ class ContactController extends Controller {
             "subject" => "required|string|min:5|max:100",
             "message" => "required|string|min:20|max:3000",
         ]);
-        dd($request->input());
+        Mail::to(User::first())->send(
+            new SendContactForm(
+                $request->input('subject'),
+                $request->input('message'),
+            )
+        );
     }
 }
