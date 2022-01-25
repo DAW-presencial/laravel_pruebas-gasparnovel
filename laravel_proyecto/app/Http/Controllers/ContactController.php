@@ -13,7 +13,8 @@ class ContactController extends Controller {
     public function send(Request $request) {
         $this->validate($request, [
             "subject" => "required|string|min:5|max:100",
-            
+            "message" => "required|string|min:20|max:3000",
         ]);
+        dd($request->input());
     }
 }
